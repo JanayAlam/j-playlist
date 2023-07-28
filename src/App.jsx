@@ -11,7 +11,7 @@ import Homepage from './pages/homepage';
 const App = () => {
     const playlist = useStoreActions((actions) => actions.playlist);
     useEffect(() => {
-        playlist.fetchPlaylist('PL0-GT3co4r2wlh6UHTUeQsrf3mlS2lk6x');
+        // playlist.fetchPlaylist('PL0-GT3co4r2wlh6UHTUeQsrf3mlS2lk6x');
     }, []);
 
     return (
@@ -38,4 +38,3 @@ const App = () => {
 };
 
 export default App;
-

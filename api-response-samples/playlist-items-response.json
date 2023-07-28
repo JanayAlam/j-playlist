@@ -1,0 +1,266 @@
+{
+    "kind": "youtube#playlistItemListResponse",
+    "etag": "w7qpAQBPlrI5ikjvGaQ9YUy3VOI",
+    "nextPageToken": "EAAaBlBUOkNBVQ",
+    "items": [
+        {
+            "kind": "youtube#playlistItem",
+            "etag": "VaMAzNaOgzRFpZ06QrJFrT75WK4",
+            "id": "UEwwLUdUM2NvNHIyd2xoNlVIVFVlUXNyZjNtbFMybGs2eC41NkI0NEY2RDEwNTU3Q0M2",
+            "snippet": {
+                "publishedAt": "2018-01-13T14:13:11Z",
+                "channelId": "UCt1bWyn4pkOw8llM0nwnKFQ",
+                "title": "The essence of calculus",
+                "description": "What might it feel like to invent calculus?\nHelp fund future projects: https://www.patreon.com/3blue1brown\nAn equally valuable form of support is to simply share some of the videos.\nSpecial thanks to these supporters: http://3b1b.co/lessons/essence-of-calculus#thanks\n\nIn this first video of the series, we see how unraveling the nuances of a simple geometry question can lead to integrals, derivatives, and the fundamental theorem of calculus.\n\n------------------\n\nThese animations are largely made using manim, a scrappy open source python library:  https://github.com/3b1b/manim\n\nIf you want to check it out, I feel compelled to warn you that it's not the most well-documented tool, and it has many other quirks you might expect in a library someone wrote with only their own use in mind.\n\nMusic by Vincent Rubinetti.\nDownload the music on Bandcamp:\nhttps://vincerubinetti.bandcamp.com/album/the-music-of-3blue1brown\n\nStream the music on Spotify:\nhttps://open.spotify.com/album/1dVyjwS8FBqXhRunaG5W5u\n\nIf you want to contribute translated subtitles or to help review those that have already been made by others and need approval, you can click the gear icon in the video and go to subtitles/cc, then \"add subtitles/cc\".  I really appreciate those who do this, as it helps make the lessons accessible to more people.\n\n------------------\n\n3blue1brown is a channel about animating math, in all senses of the word animate.  And you know the drill with YouTube, if you want to stay posted about new videos, subscribe, and click the bell to receive notifications (if you're into that).\n\nIf you are new to this channel and want to see more, a good place to start is this playlist: http://3b1b.co/recommended\n\nVarious social media stuffs:\nWebsite: https://www.3blue1brown.com\nTwitter: https://twitter.com/3Blue1Brown\nPatreon: https://patreon.com/3blue1brown\nFacebook: https://www.facebook.com/3blue1brown\nReddit: https://www.reddit.com/r/3Blue1Brown",
+                "thumbnails": {
+                    "default": {
+                        "url": "https://i.ytimg.com/vi/WUvTyaaNkzM/default.jpg",
+                        "width": 120,
+                        "height": 90
+                    },
+                    "medium": {
+                        "url": "https://i.ytimg.com/vi/WUvTyaaNkzM/mqdefault.jpg",
+                        "width": 320,
+                        "height": 180
+                    },
+                    "high": {
+                        "url": "https://i.ytimg.com/vi/WUvTyaaNkzM/hqdefault.jpg",
+                        "width": 480,
+                        "height": 360
+                    },
+                    "standard": {
+                        "url": "https://i.ytimg.com/vi/WUvTyaaNkzM/sddefault.jpg",
+                        "width": 640,
+                        "height": 480
+                    },
+                    "maxres": {
+                        "url": "https://i.ytimg.com/vi/WUvTyaaNkzM/maxresdefault.jpg",
+                        "width": 1280,
+                        "height": 720
+                    }
+                },
+                "channelTitle": "imightberong",
+                "playlistId": "PL0-GT3co4r2wlh6UHTUeQsrf3mlS2lk6x",
+                "position": 0,
+                "resourceId": {
+                    "kind": "youtube#video",
+                    "videoId": "WUvTyaaNkzM"
+                },
+                "videoOwnerChannelTitle": "3Blue1Brown",
+                "videoOwnerChannelId": "UCYO_jab_esuFRV4b17AJtAw"
+            },
+            "contentDetails": {
+                "videoId": "WUvTyaaNkzM",
+                "videoPublishedAt": "2017-04-28T15:58:48Z"
+            }
+        },
+        {
+            "kind": "youtube#playlistItem",
+            "etag": "9GxlwIFD34VfE-jz0i3YV2TBjfw",
+            "id": "UEwwLUdUM2NvNHIyd2xoNlVIVFVlUXNyZjNtbFMybGs2eC4yODlGNEE0NkRGMEEzMEQy",
+            "snippet": {
+                "publishedAt": "2018-01-13T14:13:11Z",
+                "channelId": "UCt1bWyn4pkOw8llM0nwnKFQ",
+                "title": "The paradox of the derivative | Chapter 2, Essence of calculus",
+                "description": "What is an \"instantaneous rate of change\" when change happens across time?\nHelp fund future projects: https://www.patreon.com/3blue1brown\nThis video was supported in part by Art of Problem Solving: https://aops.com/3blue1brown\nAn equally valuable form of support is to simply share some of the videos.\nSpecial thanks to these supporters: http://3b1b.co/lessons/derivatives#thanks\nHome page: https://www.3blue1brown.com/\n\nNote, to illustrate my point for the target audience of a new calculus student, I discussed a hypothetical speedometer that makes distance measurements over a very small time.  Interestingly, most actual speedometers in modern cars work by analyzing the induced current of a spinning magnet, which is in some sense the universe implementing the derivative.\n\n------------------\n\n3blue1brown is a channel about animating math, in all senses of the word animate.  And you know the drill with YouTube, if you want to stay posted about new videos, subscribe, and click the bell to receive notifications (if you're into that).\n\nIf you are new to this channel and want to see more, a good place to start is this playlist: http://3b1b.co/recommended\n\nVarious social media stuffs:\nWebsite: https://www.3blue1brown.com\nTwitter: https://twitter.com/3Blue1Brown\nPatreon: https://patreon.com/3blue1brown\nFacebook: https://www.facebook.com/3blue1brown\nReddit: https://www.reddit.com/r/3Blue1Brown",
+                "thumbnails": {
+                    "default": {
+                        "url": "https://i.ytimg.com/vi/9vKqVkMQHKk/default.jpg",
+                        "width": 120,
+                        "height": 90
+                    },
+                    "medium": {
+                        "url": "https://i.ytimg.com/vi/9vKqVkMQHKk/mqdefault.jpg",
+                        "width": 320,
+                        "height": 180
+                    },
+                    "high": {
+                        "url": "https://i.ytimg.com/vi/9vKqVkMQHKk/hqdefault.jpg",
+                        "width": 480,
+                        "height": 360
+                    },
+                    "standard": {
+                        "url": "https://i.ytimg.com/vi/9vKqVkMQHKk/sddefault.jpg",
+                        "width": 640,
+                        "height": 480
+                    },
+                    "maxres": {
+                        "url": "https://i.ytimg.com/vi/9vKqVkMQHKk/maxresdefault.jpg",
+                        "width": 1280,
+                        "height": 720
+                    }
+                },
+                "channelTitle": "imightberong",
+                "playlistId": "PL0-GT3co4r2wlh6UHTUeQsrf3mlS2lk6x",
+                "position": 1,
+                "resourceId": {
+                    "kind": "youtube#video",
+                    "videoId": "9vKqVkMQHKk"
+                },
+                "videoOwnerChannelTitle": "3Blue1Brown",
+                "videoOwnerChannelId": "UCYO_jab_esuFRV4b17AJtAw"
+            },
+            "contentDetails": {
+                "videoId": "9vKqVkMQHKk",
+                "videoPublishedAt": "2017-04-29T16:24:03Z"
+            }
+        },
+        {
+            "kind": "youtube#playlistItem",
+            "etag": "7g5EgU4W3MmwBX-LprONTVUKHLo",
+            "id": "UEwwLUdUM2NvNHIyd2xoNlVIVFVlUXNyZjNtbFMybGs2eC4wMTcyMDhGQUE4NTIzM0Y5",
+            "snippet": {
+                "publishedAt": "2018-01-13T14:13:11Z",
+                "channelId": "UCt1bWyn4pkOw8llM0nwnKFQ",
+                "title": "Derivative formulas through geometry | Chapter 3, Essence of calculus",
+                "description": "Some common derivative formulas explained with geometric intuition.\nThis video was sponsored by Brilliant: https://brilliant.org/3b1b\nHelp fund future projects: https://www.patreon.com/3blue1brown\nAn equally valuable form of support is to simply share some of the videos.\nSpecial thanks to these supporters: http://3b1b.co/lessons/derivatives-power-rule#thanks\n\nTime stamps:\n0:00 Intro\n1:38 f(x) = x^2\n4:41 f(x) = x^3\n6:54 f(x) = x^n \"Power Rule\"\n10:07 f(x) = 1/x\n12:36 Sine\n16:56 Outro\n\nGreat video by Think Twice showing this geometric view of the derivative of sin(x):\nhttps://youtu.be/R4o7sraVMZg\n\nMusic:\nhttps://vincerubinetti.bandcamp.com/album/the-music-of-3blue1brown\n------------------\n\n3blue1brown is a channel about animating math, in all senses of the word animate.  And you know the drill with YouTube, if you want to stay posted about new videos, subscribe, and click the bell to receive notifications (if you're into that).\n\nIf you are new to this channel and want to see more, a good place to start is this playlist: http://3b1b.co/recommended\n\nVarious social media stuffs:\nWebsite: https://www.3blue1brown.com\nTwitter: https://twitter.com/3Blue1Brown\nPatreon: https://patreon.com/3blue1brown\nFacebook: https://www.facebook.com/3blue1brown\nReddit: https://www.reddit.com/r/3Blue1Brown",
+                "thumbnails": {
+                    "default": {
+                        "url": "https://i.ytimg.com/vi/S0_qX4VJhMQ/default.jpg",
+                        "width": 120,
+                        "height": 90
+                    },
+                    "medium": {
+                        "url": "https://i.ytimg.com/vi/S0_qX4VJhMQ/mqdefault.jpg",
+                        "width": 320,
+                        "height": 180
+                    },
+                    "high": {
+                        "url": "https://i.ytimg.com/vi/S0_qX4VJhMQ/hqdefault.jpg",
+                        "width": 480,
+                        "height": 360
+                    },
+                    "standard": {
+                        "url": "https://i.ytimg.com/vi/S0_qX4VJhMQ/sddefault.jpg",
+                        "width": 640,
+                        "height": 480
+                    },
+                    "maxres": {
+                        "url": "https://i.ytimg.com/vi/S0_qX4VJhMQ/maxresdefault.jpg",
+                        "width": 1280,
+                        "height": 720
+                    }
+                },
+                "channelTitle": "imightberong",
+                "playlistId": "PL0-GT3co4r2wlh6UHTUeQsrf3mlS2lk6x",
+                "position": 2,
+                "resourceId": {
+                    "kind": "youtube#video",
+                    "videoId": "S0_qX4VJhMQ"
+                },
+                "videoOwnerChannelTitle": "3Blue1Brown",
+                "videoOwnerChannelId": "UCYO_jab_esuFRV4b17AJtAw"
+            },
+            "contentDetails": {
+                "videoId": "S0_qX4VJhMQ",
+                "videoPublishedAt": "2017-04-30T15:24:09Z"
+            }
+        },
+        {
+            "kind": "youtube#playlistItem",
+            "etag": "JMmPEuQW36FyGHVwzm758Qh98ys",
+            "id": "UEwwLUdUM2NvNHIyd2xoNlVIVFVlUXNyZjNtbFMybGs2eC41MjE1MkI0OTQ2QzJGNzNG",
+            "snippet": {
+                "publishedAt": "2018-01-13T14:13:11Z",
+                "channelId": "UCt1bWyn4pkOw8llM0nwnKFQ",
+                "title": "Visualizing the chain rule and product rule | Chapter 4, Essence of calculus",
+                "description": "A visual explanation of what the chain rule and product rule are, and why they are true.\nHelp fund future projects: https://www.patreon.com/3blue1brown\nThis video was sponsored by Brilliant: https://brilliant.org/3b1b\nAn equally valuable form of support is to simply share some of the videos.\nSpecial thanks to these supporters: http://3b1b.co/lessons/chain-rule-and-product-rule#thanks\nHome page: https://www.3blue1brown.com\n\nSeries like this one are funded largely by the community, through Patreon, where supporters get early access as the series is being produced.\nhttp://3b1b.co/support\n\nTimestamps:\n0:00 - Intro\n1:48 - Sum rule\n4:13 - Product rule\n8:41 - Chain rule\n14:36 - Outro\n\n------------------\n\n3blue1brown is a channel about animating math, in all senses of the word animate.  And you know the drill with YouTube, if you want to stay posted about new videos, subscribe, and click the bell to receive notifications (if you're into that).\n\nIf you are new to this channel and want to see more, a good place to start is this playlist: http://3b1b.co/recommended\n\nVarious social media stuffs:\nWebsite: https://www.3blue1brown.com\nTwitter: https://twitter.com/3Blue1Brown\nPatreon: https://patreon.com/3blue1brown\nFacebook: https://www.facebook.com/3blue1brown\nReddit: https://www.reddit.com/r/3Blue1Brown",
+                "thumbnails": {
+                    "default": {
+                        "url": "https://i.ytimg.com/vi/YG15m2VwSjA/default.jpg",
+                        "width": 120,
+                        "height": 90
+                    },
+                    "medium": {
+                        "url": "https://i.ytimg.com/vi/YG15m2VwSjA/mqdefault.jpg",
+                        "width": 320,
+                        "height": 180
+                    },
+                    "high": {
+                        "url": "https://i.ytimg.com/vi/YG15m2VwSjA/hqdefault.jpg",
+                        "width": 480,
+                        "height": 360
+                    },
+                    "standard": {
+                        "url": "https://i.ytimg.com/vi/YG15m2VwSjA/sddefault.jpg",
+                        "width": 640,
+                        "height": 480
+                    },
+                    "maxres": {
+                        "url": "https://i.ytimg.com/vi/YG15m2VwSjA/maxresdefault.jpg",
+                        "width": 1280,
+                        "height": 720
+                    }
+                },
+                "channelTitle": "imightberong",
+                "playlistId": "PL0-GT3co4r2wlh6UHTUeQsrf3mlS2lk6x",
+                "position": 3,
+                "resourceId": {
+                    "kind": "youtube#video",
+                    "videoId": "YG15m2VwSjA"
+                },
+                "videoOwnerChannelTitle": "3Blue1Brown",
+                "videoOwnerChannelId": "UCYO_jab_esuFRV4b17AJtAw"
+            },
+            "contentDetails": {
+                "videoId": "YG15m2VwSjA",
+                "videoPublishedAt": "2017-05-01T15:19:28Z"
+            }
+        },
+        {
+            "kind": "youtube#playlistItem",
+            "etag": "49XjVhNs1L4TmwCoZebQ5a-l018",
+            "id": "UEwwLUdUM2NvNHIyd2xoNlVIVFVlUXNyZjNtbFMybGs2eC4wOTA3OTZBNzVEMTUzOTMy",
+            "snippet": {
+                "publishedAt": "2018-01-13T14:13:11Z",
+                "channelId": "UCt1bWyn4pkOw8llM0nwnKFQ",
+                "title": "What's so special about Euler's number e? | Chapter 5, Essence of calculus",
+                "description": "What is e?  And why are exponentials proportional to their own derivatives?\nHelp fund future projects: https://www.patreon.com/3blue1brown\nAn equally valuable form of support is to simply share some of the videos.\nSpecial thanks to these supporters: http://3b1b.co/lessons/eulers-number#thanks\nHome page: https://www.3blue1brown.com\n\nTimestamps\n0:00 - Motivating example\n3:57 - Deriving the key proportionality property\n7:36 - What is e?\n8:48 - Natural logs\n11:23 - Writing e^ct is a choice\n\n\nCorrections:\n9:40 - I meant to say \"*the derivative of* e to the power of some constant...\"\n12:30 - What's written as \"(1 + r)\" should really just be r, by any usual convention for how to write an interest rate.\n\n\n\n\n------------------\n\n3blue1brown is a channel about animating math, in all senses of the word animate.  And you know the drill with YouTube, if you want to stay posted about new videos, subscribe, and click the bell to receive notifications (if you're into that).\n\nIf you are new to this channel and want to see more, a good place to start is this playlist: http://3b1b.co/recommended\n\nVarious social media stuffs:\nWebsite: https://www.3blue1brown.com\nTwitter: https://twitter.com/3Blue1Brown\nPatreon: https://patreon.com/3blue1brown\nFacebook: https://www.facebook.com/3blue1brown\nReddit: https://www.reddit.com/r/3Blue1Brown",
+                "thumbnails": {
+                    "default": {
+                        "url": "https://i.ytimg.com/vi/m2MIpDrF7Es/default.jpg",
+                        "width": 120,
+                        "height": 90
+                    },
+                    "medium": {
+                        "url": "https://i.ytimg.com/vi/m2MIpDrF7Es/mqdefault.jpg",
+                        "width": 320,
+                        "height": 180
+                    },
+                    "high": {
+                        "url": "https://i.ytimg.com/vi/m2MIpDrF7Es/hqdefault.jpg",
+                        "width": 480,
+                        "height": 360
+                    },
+                    "standard": {
+                        "url": "https://i.ytimg.com/vi/m2MIpDrF7Es/sddefault.jpg",
+                        "width": 640,
+                        "height": 480
+                    },
+                    "maxres": {
+                        "url": "https://i.ytimg.com/vi/m2MIpDrF7Es/maxresdefault.jpg",
+                        "width": 1280,
+                        "height": 720
+                    }
+                },
+                "channelTitle": "imightberong",
+                "playlistId": "PL0-GT3co4r2wlh6UHTUeQsrf3mlS2lk6x",
+                "position": 4,
+                "resourceId": {
+                    "kind": "youtube#video",
+                    "videoId": "m2MIpDrF7Es"
+                },
+                "videoOwnerChannelTitle": "3Blue1Brown",
+                "videoOwnerChannelId": "UCYO_jab_esuFRV4b17AJtAw"
+            },
+            "contentDetails": {
+                "videoId": "m2MIpDrF7Es",
+                "videoPublishedAt": "2017-05-02T15:09:46Z"
+            }
+        }
+    ],
+    "pageInfo": {
+        "totalResults": 11,
+        "resultsPerPage": 5
+    }
+}

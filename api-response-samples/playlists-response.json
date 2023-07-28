@@ -1,0 +1,56 @@
+{
+    "kind": "youtube#playlistListResponse",
+    "etag": "Iw_xVkdaKB0EdWcaKAdZUoDlVD4",
+    "pageInfo": {
+        "totalResults": 1,
+        "resultsPerPage": 5
+    },
+    "items": [
+        {
+            "kind": "youtube#playlist",
+            "etag": "IG7OfNVLYU0E3IDzIH6WtIBCPTE",
+            "id": "PL0-GT3co4r2wlh6UHTUeQsrf3mlS2lk6x",
+            "snippet": {
+                "publishedAt": "2018-01-13T14:13:11Z",
+                "channelId": "UCt1bWyn4pkOw8llM0nwnKFQ",
+                "title": "3Blue1Brown: Calculus",
+                "description": "",
+                "thumbnails": {
+                    "default": {
+                        "url": "https://i.ytimg.com/vi/WUvTyaaNkzM/default.jpg",
+                        "width": 120,
+                        "height": 90
+                    },
+                    "medium": {
+                        "url": "https://i.ytimg.com/vi/WUvTyaaNkzM/mqdefault.jpg",
+                        "width": 320,
+                        "height": 180
+                    },
+                    "high": {
+                        "url": "https://i.ytimg.com/vi/WUvTyaaNkzM/hqdefault.jpg",
+                        "width": 480,
+                        "height": 360
+                    },
+                    "standard": {
+                        "url": "https://i.ytimg.com/vi/WUvTyaaNkzM/sddefault.jpg",
+                        "width": 640,
+                        "height": 480
+                    },
+                    "maxres": {
+                        "url": "https://i.ytimg.com/vi/WUvTyaaNkzM/maxresdefault.jpg",
+                        "width": 1280,
+                        "height": 720
+                    }
+                },
+                "channelTitle": "imightberong",
+                "localized": {
+                    "title": "3Blue1Brown: Calculus",
+                    "description": ""
+                }
+            },
+            "contentDetails": {
+                "itemCount": 11
+            }
+        }
+    ]
+}
