@@ -1,19 +1,17 @@
 import Container from '@mui/material/Container';
 import CssBaseline from '@mui/material/CssBaseline';
+import { useStoreActions } from 'easy-peasy';
 import { useEffect } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import getPlaylistById from './api';
 import ErrorComponent from './components/ui/error';
 import Navbar from './components/ui/navbar';
 import Playlist from './pages/Playlist';
 import Homepage from './pages/homepage';
 
 const App = () => {
-    // PL0-GT3co4r2wlh6UHTUeQsrf3mlS2lk6x
+    const playlist = useStoreActions((actions) => actions.playlist);
     useEffect(() => {
-        getPlaylistById('PL0-GT3co4r2wlh6UHTUeQsrf3mlS2lk6x')
-            .then((data) => console.log(data))
-            .catch((e) => console.log(e));
+        playlist.fetchPlaylist('PL0-GT3co4r2wlh6UHTUeQsrf3mlS2lk6x');
     }, []);
 
     return (

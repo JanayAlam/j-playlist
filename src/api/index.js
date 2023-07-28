@@ -46,47 +46,56 @@ const _getPlaylistItems = async (
  * }
  */
 const getPlaylistById = async (playlistId) => {
+    // TODO: Check if the playlist is already in the local storage or not.
     const parts = ['id', 'contentDetails', 'snippet'];
     const URL = `${BASE_URL}/playlists?part=${parts.join(
         '%2C'
     )}&id=${playlistId}&key=${API_KEY}`;
 
     const { data: playlist } = await axios.get(URL);
-    const {
-        channelId,
-        title: playlistTitle,
-        description: playlistDescription,
-        thumbnails: playlistThumbnails,
-        channelTitle,
-    } = playlist?.items[0]?.snippet;
-
-    const playlistItems = await _getPlaylistItems(playlistId);
-
-    const items = playlistItems.map((item) => {
+    try {
         const {
-            title: videoTitle,
-            description: videoDescription,
-            thumbnails: { medium },
-        } = item.snippet;
-        const { videoId, videoPublishedAt } = item.contentDetails;
-        return {
-            videoId,
-            videoTitle,
-            videoDescription,
-            thumbnail: medium,
-            videoPublishedAt,
-        };
-    });
+            channelId,
+            title: playlistTitle,
+            description: playlistDescription,
+            thumbnails: playlistThumbnails,
+            channelTitle,
+        } = playlist?.items[0]?.snippet;
 
-    return {
-        playlistId,
-        channelId,
-        channelTitle,
-        playlistTitle,
-        playlistDescription,
-        playlistThumbnail: playlistThumbnails.high,
-        items,
-    };
+        const playlistItems = await _getPlaylistItems(playlistId);
+
+        const items = playlistItems.map((item) => {
+            const {
+                title: videoTitle,
+                description: videoDescription,
+                thumbnails: { medium },
+            } = item.snippet;
+            const { videoId, videoPublishedAt } = item.contentDetails;
+            return {
+                videoId,
+                videoTitle,
+                videoDescription,
+                thumbnail: medium,
+                videoPublishedAt,
+            };
+        });
+
+        return {
+            playlistId,
+            channelId,
+            channelTitle,
+            playlistTitle,
+            playlistDescription,
+            playlistThumbnail: playlistThumbnails.high,
+            items,
+        };
+    } catch (err) {
+        if (err instanceof TypeError) {
+            // Type error means playlist is not found with the provided id.
+            throw new Error('Playlist not found');
+        }
+        throw new Error(err.message);
+    }
 };
 
 export default getPlaylistById;
