@@ -6,15 +6,35 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import TextField from '@mui/material/TextField';
+import { useStoreActions } from 'easy-peasy';
 import PropTypes from 'prop-types';
 import { Controller, useForm } from 'react-hook-form';
 import * as Yup from 'yup';
+import { getPlaylistIdFromString } from '../../utils/playlist-id-parser';
+
+Yup.addMethod(Yup.string, 'validPlaylistLinkOrId', function (errorMessage) {
+    // https://stackoverflow.com/a/63769828
+    return this.test(
+        `valid-playlist-link-or-id`,
+        errorMessage,
+        function (value) {
+            const { path, createError } = this;
+            return (
+                getPlaylistIdFromString(value) ||
+                createError({ path, message: errorMessage })
+            );
+        }
+    );
+});
 
 const validationSchema = Yup.object().shape({
     playlistLinkOrId: Yup.string()
         .label('Playlist link or id')
         .trim()
-        .required(),
+        .required()
+        .validPlaylistLinkOrId(
+            'Please enter a valid youtube playlist link or id'
+        ),
 });
 
 const AddPlaylistModal = ({ open, handleClose }) => {
@@ -31,8 +51,11 @@ const AddPlaylistModal = ({ open, handleClose }) => {
         resolver: yupResolver(validationSchema),
     });
 
+    const playlist = useStoreActions((actions) => actions.playlist);
+
     const onSubmitHandler = (data) => {
-        console.log(data);
+        const playlistId = getPlaylistIdFromString(data.playlistLinkOrId);
+        reset();
     };
 
     return (
