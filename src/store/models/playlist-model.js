@@ -63,7 +63,6 @@ const playlistModel = {
             } catch (err) {
                 const errMessage =
                     err.response?.data?.error?.message || err.message;
-                console.log(errMessage);
                 setError(errMessage || 'Something went wrong');
             } finally {
                 setIsFetchPlaylistLoading(false);

@@ -7,12 +7,14 @@ import _ from 'lodash';
  */
 export const getPlaylistIdFromString = (str) => {
     str = _.trim(str);
-    if (_.startsWith(str, 'PL_')) {
+    if (_.startsWith(str, 'PL')) {
         return str;
     } else if (str.toLowerCase().includes('youtube.com/playlist?list=')) {
         let splittedString = _.split(str, 'list=', 2)[1];
         splittedString = _.split(splittedString, '&', 1)[0];
-        return splittedString;
+        if (_.startsWith(splittedString, 'PL')) {
+            return splittedString;
+        }
     }
     return null;
 };
