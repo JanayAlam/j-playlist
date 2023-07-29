@@ -5,8 +5,8 @@ import { useEffect } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import ErrorComponent from './components/ui/error';
 import Navbar from './components/ui/navbar';
-import Playlist from './pages/Playlist';
-import Homepage from './pages/homepage';
+import Homepage from './pages/Homepage';
+import PlaylistDetails from './pages/PlaylistDetails.jsx';
 
 const App = () => {
     const playlist = useStoreActions((actions) => actions.playlist);
@@ -21,7 +21,7 @@ const App = () => {
             <Container>
                 <Routes>
                     <Route path="/" element={<Homepage />} />
-                    <Route path="/playlist" element={<Playlist />} />
+                    <Route path="/playlist" element={<PlaylistDetails />} />
                     <Route
                         path="*"
                         element={

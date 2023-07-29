@@ -37,6 +37,16 @@ const playlistModel = {
             state.isFetchPlaylistLoading = !!payload;
         }
     ),
+    toggleFavorite: action(
+        /**
+         * Toggle the playlist in the favorite list.
+         * @param {Object} state Playlist's states provided by easy peasy.
+         * @param {*} payload Playlist id.
+         */
+        (state, payload) => {
+            state.data[payload].isFavorite = !state.data[payload].isFavorite;
+        }
+    ),
     // thunks
     fetchPlaylist: thunk(
         /**

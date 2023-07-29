@@ -60,6 +60,7 @@ const getPlaylistById = async (playlistId) => {
             description: playlistDescription,
             thumbnails: playlistThumbnails,
             channelTitle,
+            publishedAt: playlistPublishedAt,
         } = playlist?.items[0]?.snippet;
 
         const playlistItems = await _getPlaylistItems(playlistId);
@@ -86,8 +87,10 @@ const getPlaylistById = async (playlistId) => {
             channelTitle,
             playlistTitle,
             playlistDescription,
+            playlistPublishedAt,
             playlistThumbnail: playlistThumbnails.high,
             items,
+            isFavorite: false,
         };
     } catch (err) {
         if (err instanceof TypeError) {
