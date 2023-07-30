@@ -1,4 +1,4 @@
-import MovieIcon from '@mui/icons-material/Movie';
+import LiveTvIcon from '@mui/icons-material/LiveTv';
 import OpenInNewIcon from '@mui/icons-material/OpenInNew';
 import StarIcon from '@mui/icons-material/Star';
 import StarBorderIcon from '@mui/icons-material/StarBorder';
@@ -11,9 +11,16 @@ import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import { grey } from '@mui/material/colors';
 import { format } from 'date-fns';
+import { useStoreActions } from 'easy-peasy';
 import PropTypes from 'prop-types';
 
 const PlaylistItem = ({ item }) => {
+    const playlist = useStoreActions((actions) => actions.playlist);
+
+    const toggleAddToFavorite = () => {
+        playlist.toggleFavorite(item.playlistId);
+    };
+
     return (
         <Box sx={{ my: 2 }}>
             <Card sx={{ display: 'flex' }}>
@@ -35,8 +42,8 @@ const PlaylistItem = ({ item }) => {
                             variant="h5"
                             sx={{ fontWeight: 'bold' }}
                         >
-                            {item.playlistTitle.substring(0, 100)}
-                            {item.playlistTitle.length > 100 ? '...' : ''}
+                            {item.playlistTitle.substring(0, 76)}
+                            {item.playlistTitle.length > 76 ? '...' : ''}
                         </Typography>
                         <Typography
                             variant="subtitle1"
@@ -71,18 +78,21 @@ const PlaylistItem = ({ item }) => {
                                 component={'span'}
                                 color={grey[900]}
                             >
-                                <MovieIcon />
+                                <LiveTvIcon />
                                 <Box sx={{ ml: 1 }}>{item.channelTitle}</Box>
                             </Typography>
                             <Typography
                                 variant="caption"
                                 component={'span'}
                                 color={grey[500]}
+                                sx={{ mr: 1 }}
                             >
                                 {format(
                                     new Date(item.playlistPublishedAt),
                                     'MMMM dd, yyyy'
                                 )}
+                                {' - '}
+                                {item.items.length + ' Videos'}
                             </Typography>
                         </Box>
                         <Box
@@ -92,7 +102,11 @@ const PlaylistItem = ({ item }) => {
                                 gap: 1,
                             }}
                         >
-                            <IconButton color="primary" size="medium">
+                            <IconButton
+                                color="primary"
+                                size="medium"
+                                onClick={toggleAddToFavorite}
+                            >
                                 {item.isFavorite ? (
                                     <StarIcon />
                                 ) : (

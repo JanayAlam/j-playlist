@@ -1,3 +1,7 @@
+import PlaylistPlayIcon from '@mui/icons-material/PlaylistPlay';
+import StarIcon from '@mui/icons-material/Star';
+import Box from '@mui/material/Box';
+import Button from '@mui/material/Button';
 import { useStoreState } from 'easy-peasy';
 import { useState } from 'react';
 import Playlists from '../components/playlists';
@@ -20,18 +24,30 @@ const Homepage = () => {
     const { data: playlistData } = useStoreState((states) => states.playlist);
 
     return (
-        <div>
-            <div>
-                <button onClick={() => setState('playlists')}>Playlist</button>
-                <button onClick={() => setState('favorite')}>Favorite</button>
-            </div>
+        <>
+            <Box sx={{ my: 1, display: 'flex', alignItems: 'center', gap: 1 }}>
+                <Button
+                    onClick={() => setState('playlists')}
+                    variant={state === 'favorite' ? '' : 'outlined'}
+                    color="primary"
+                >
+                    <PlaylistPlayIcon sx={{ mr: 1 }} /> Playlists
+                </Button>
+                <Button
+                    onClick={() => setState('favorite')}
+                    variant={state === 'favorite' ? 'outlined' : ''}
+                    color="primary"
+                >
+                    <StarIcon sx={{ mr: 1 }} /> Favorites
+                </Button>
+            </Box>
             <Playlists
                 playlistsArr={mapObjectToArray(
                     playlistData,
                     state === 'favorite' && 'favorite'
                 )}
             />
-        </div>
+        </>
     );
 };
 
