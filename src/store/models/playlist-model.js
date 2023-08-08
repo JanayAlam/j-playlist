@@ -1,5 +1,9 @@
 import { action, thunk } from 'easy-peasy';
 import getPlaylistById from '../../api';
+import {
+    cachePlaylistData,
+    getPlaylistsFromLocalStorage,
+} from '../../utils/local-storage-cashing';
 
 const playlistModel = {
     // states
@@ -45,6 +49,17 @@ const playlistModel = {
          */
         (state, payload) => {
             state.data[payload].isFavorite = !state.data[payload].isFavorite;
+            cachePlaylistData(state.data);
+        }
+    ),
+    loadLocalStorage: action(
+        /**
+         * Add a new playlist to the state. If the playlist already exists in the state then it will not include it again.
+         * @param {Object} actions Playlist's actions from easy peasy.
+         * @param {String} _payload Payload object (never used).
+         */
+        (state, _payload) => {
+            state.data = getPlaylistsFromLocalStorage();
         }
     ),
     // thunks
@@ -56,9 +71,12 @@ const playlistModel = {
          * @param {Object} helper Helper object from easy peasy.
          */
         async (actions, payload, helper) => {
-            // TODO: Local storage optimization
-            const { addPlaylist, setError, setIsFetchPlaylistLoading } =
-                actions;
+            const {
+                addPlaylist,
+                updateLocalStorage,
+                setError,
+                setIsFetchPlaylistLoading,
+            } = actions;
             const { getState } = helper;
 
             if (getState().data[payload]) return;
@@ -70,6 +88,7 @@ const playlistModel = {
                     throw new Error('Playlist not found');
                 }
                 addPlaylist(playlistData);
+                cachePlaylistData(getState().data);
             } catch (err) {
                 const errMessage =
                     err.response?.data?.error?.message || err.message;

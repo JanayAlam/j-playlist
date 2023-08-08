@@ -1,28 +1,22 @@
 import AddIcon from '@mui/icons-material/Add';
-import { Stack } from '@mui/material';
 import AppBar from '@mui/material/AppBar';
 import Container from '@mui/material/Container';
 import IconButton from '@mui/material/IconButton';
 import Link from '@mui/material/Link';
+import Stack from '@mui/material/Stack';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
-import { grey, orange } from '@mui/material/colors';
-import { useState } from 'react';
+import { grey } from '@mui/material/colors';
+import PropTypes from 'prop-types';
 import { Link as RouterLink } from 'react-router-dom';
 import logo from '../../../assets/logo.png';
 import AddPlaylistModal from '../../add-playlist-modal';
 
-const Navbar = () => {
-    const [addPlaylistModalOpen, setAddPlaylistModalOpen] = useState(false);
-
-    const handleAddPlaylistModalOpen = () => {
-        setAddPlaylistModalOpen(true);
-    };
-
-    const handleAddPlaylistModalClose = () => {
-        setAddPlaylistModalOpen(false);
-    };
-
+const Navbar = ({
+    addPlaylistModalOpen,
+    handleAddPlaylistModalOpen,
+    handleAddPlaylistModalClose,
+}) => {
     return (
         <>
             <AppBar
@@ -56,7 +50,6 @@ const Navbar = () => {
                                         sx={{ ml: 1, fontWeight: 'bold' }}
                                         variant="h6"
                                         component="div"
-                                        color={orange[900]}
                                     >
                                         J Playlist
                                     </Typography>
@@ -78,6 +71,12 @@ const Navbar = () => {
             />
         </>
     );
+};
+
+Navbar.propTypes = {
+    addPlaylistModalOpen: PropTypes.bool.isRequired,
+    handleAddPlaylistModalOpen: PropTypes.func.isRequired,
+    handleAddPlaylistModalClose: PropTypes.func.isRequired,
 };
 
 export default Navbar;

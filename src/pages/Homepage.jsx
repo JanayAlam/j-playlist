@@ -3,8 +3,11 @@ import StarIcon from '@mui/icons-material/Star';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import { useStoreState } from 'easy-peasy';
+import PropTypes from 'prop-types';
 import { useState } from 'react';
 import Playlists from '../components/playlists';
+import RecentPlaylists from '../components/recent-playlists';
+import EmptyPlaylist from '../components/ui/empty-playlist';
 
 const mapObjectToArray = (obj, filter = '') => {
     const arr = [];
@@ -19,12 +22,13 @@ const mapObjectToArray = (obj, filter = '') => {
     return arr;
 };
 
-const Homepage = () => {
+const Homepage = ({ handleAddPlaylistModalOpen }) => {
     const [state, setState] = useState('playlists');
     const { data: playlistData } = useStoreState((states) => states.playlist);
 
-    return (
+    return Object.keys(playlistData).length > 0 ? (
         <>
+            <RecentPlaylists itemData={mapObjectToArray(playlistData)} />
             <Box sx={{ my: 1, display: 'flex', alignItems: 'center', gap: 1 }}>
                 <Button
                     onClick={() => setState('playlists')}
@@ -48,7 +52,15 @@ const Homepage = () => {
                 )}
             />
         </>
+    ) : (
+        <EmptyPlaylist
+            handleAddPlaylistModalOpen={handleAddPlaylistModalOpen}
+        />
     );
+};
+
+Homepage.propTypes = {
+    handleAddPlaylistModalOpen: PropTypes.func.isRequired,
 };
 
 export default Homepage;

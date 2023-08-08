@@ -57,15 +57,19 @@ const AddPlaylistModal = ({ open, handleClose }) => {
     const { error: playlistError, isFetchPlaylistLoading } = useStoreState(
         (states) => states.playlist
     );
-    const playlist = useStoreActions((actions) => actions.playlist);
+    const playlistActions = useStoreActions((actions) => actions.playlist);
+    const recentPlaylistActions = useStoreActions(
+        (actions) => actions.recentPlaylist
+    );
 
     const clearErrorMessage = () => {
-        playlist.setError('');
+        playlistActions.setError('');
     };
 
     const onSubmitHandler = async (data) => {
         const playlistId = getPlaylistIdFromString(data.playlistLinkOrId);
-        await playlist.fetchPlaylist(playlistId);
+        await playlistActions.fetchPlaylist(playlistId);
+        recentPlaylistActions.addToRecentItems(playlistId);
         reset();
         handleClose();
     };

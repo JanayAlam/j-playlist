@@ -1,7 +1,7 @@
 import Container from '@mui/material/Container';
 import CssBaseline from '@mui/material/CssBaseline';
 import { useStoreActions } from 'easy-peasy';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import ErrorComponent from './components/ui/error';
 import Navbar from './components/ui/navbar';
@@ -10,17 +10,41 @@ import PlaylistDetails from './pages/PlaylistDetails.jsx';
 
 const App = () => {
     const playlist = useStoreActions((actions) => actions.playlist);
+
+    const [addPlaylistModalOpen, setAddPlaylistModalOpen] = useState(false);
+
+    const handleAddPlaylistModalOpen = () => {
+        setAddPlaylistModalOpen(true);
+    };
+
+    const handleAddPlaylistModalClose = () => {
+        setAddPlaylistModalOpen(false);
+    };
+
     useEffect(() => {
-        // playlist.fetchPlaylist('PL0-GT3co4r2wlh6UHTUeQsrf3mlS2lk6x');
+        playlist.loadLocalStorage();
     }, []);
 
     return (
         <BrowserRouter>
             <CssBaseline />
-            <Navbar />
+            <Navbar
+                addPlaylistModalOpen={addPlaylistModalOpen}
+                handleAddPlaylistModalOpen={handleAddPlaylistModalOpen}
+                handleAddPlaylistModalClose={handleAddPlaylistModalClose}
+            />
             <Container>
                 <Routes>
-                    <Route path="/" element={<Homepage />} />
+                    <Route
+                        path="/"
+                        element={
+                            <Homepage
+                                handleAddPlaylistModalOpen={
+                                    handleAddPlaylistModalOpen
+                                }
+                            />
+                        }
+                    />
                     <Route path="/playlist" element={<PlaylistDetails />} />
                     <Route
                         path="*"

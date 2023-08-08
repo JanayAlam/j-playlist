@@ -26,7 +26,7 @@ const PlaylistItem = ({ item }) => {
             <Card sx={{ display: 'flex' }}>
                 <CardMedia
                     component="img"
-                    sx={{ width: '250px' }}
+                    sx={{ height: '120px', width: '220px' }}
                     image={item.playlistThumbnail.url}
                 />
                 <Box
@@ -42,16 +42,8 @@ const PlaylistItem = ({ item }) => {
                             variant="h5"
                             sx={{ fontWeight: 'bold' }}
                         >
-                            {item.playlistTitle.substring(0, 76)}
-                            {item.playlistTitle.length > 76 ? '...' : ''}
-                        </Typography>
-                        <Typography
-                            variant="subtitle1"
-                            color="text.secondary"
-                            component="div"
-                        >
-                            {item.playlistDescription.substring(0, 200)}
-                            {item.playlistDescription.length > 200 ? '...' : ''}
+                            {item.playlistTitle.substring(0, 50)}
+                            {item.playlistTitle.length > 50 ? '...' : ''}
                         </Typography>
                     </CardContent>
                     <Box
