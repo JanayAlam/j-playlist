@@ -28,7 +28,7 @@ const Homepage = ({ handleAddPlaylistModalOpen }) => {
 
     return Object.keys(playlistData).length > 0 ? (
         <>
-            <RecentPlaylists itemData={mapObjectToArray(playlistData)} />
+            <RecentPlaylists />
             <Box sx={{ my: 1, display: 'flex', alignItems: 'center', gap: 1 }}>
                 <Button
                     onClick={() => setState('playlists')}

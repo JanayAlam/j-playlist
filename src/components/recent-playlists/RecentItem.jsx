@@ -27,8 +27,7 @@ const RecentItem = ({ data }) => {
                     </Typography>
                 </CardContent>
                 <CardActions>
-                    <Button size="small">Share</Button>
-                    <Button size="small">Learn More</Button>
+                    <Button size="small">Visit playlist</Button>
                 </CardActions>
             </Card>
         )

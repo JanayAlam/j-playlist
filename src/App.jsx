@@ -10,6 +10,7 @@ import PlaylistDetails from './pages/PlaylistDetails.jsx';
 
 const App = () => {
     const playlist = useStoreActions((actions) => actions.playlist);
+    const recentPlaylist = useStoreActions((actions) => actions.recentPlaylist);
 
     const [addPlaylistModalOpen, setAddPlaylistModalOpen] = useState(false);
 
@@ -23,6 +24,7 @@ const App = () => {
 
     useEffect(() => {
         playlist.loadLocalStorage();
+        recentPlaylist.loadLocalStorage();
     }, []);
 
     return (
