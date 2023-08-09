@@ -5,6 +5,7 @@ import Button from '@mui/material/Button';
 import { useStoreState } from 'easy-peasy';
 import PropTypes from 'prop-types';
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Playlists from '../components/playlists';
 import RecentPlaylists from '../components/recent-playlists';
 import EmptyPlaylist from '../components/ui/empty-playlist';
@@ -25,10 +26,19 @@ const mapObjectToArray = (obj, filter = '') => {
 const Homepage = ({ handleAddPlaylistModalOpen }) => {
     const [state, setState] = useState('playlists');
     const { data: playlistData } = useStoreState((states) => states.playlist);
+    const navigate = useNavigate();
+
+    /**
+     * Navigate to the selected playlist details page,
+     * @param {String} playlistId The selected playlist id
+     */
+    const viewPlaylistHandler = (playlistId) => {
+        navigate(`/playlist/${playlistId}`);
+    };
 
     return Object.keys(playlistData).length > 0 ? (
         <>
-            <RecentPlaylists />
+            <RecentPlaylists viewPlaylistHandler={viewPlaylistHandler} />
             <Box sx={{ my: 1, display: 'flex', alignItems: 'center', gap: 1 }}>
                 <Button
                     onClick={() => setState('playlists')}
@@ -50,6 +60,7 @@ const Homepage = ({ handleAddPlaylistModalOpen }) => {
                     playlistData,
                     state === 'favorite' && 'favorite'
                 )}
+                viewPlaylistHandler={viewPlaylistHandler}
             />
         </>
     ) : (

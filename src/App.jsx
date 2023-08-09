@@ -47,7 +47,10 @@ const App = () => {
                             />
                         }
                     />
-                    <Route path="/playlist" element={<PlaylistDetails />} />
+                    <Route
+                        path="/playlist/:playlistId"
+                        element={<PlaylistDetails />}
+                    />
                     <Route
                         path="*"
                         element={

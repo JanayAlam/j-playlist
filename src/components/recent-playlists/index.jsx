@@ -2,9 +2,10 @@ import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import { blue } from '@mui/material/colors';
 import { useStoreState } from 'easy-peasy';
+import PropTypes from 'prop-types';
 import RecentItem from './RecentItem';
 
-const RecentPlaylists = () => {
+const RecentPlaylists = ({ viewPlaylistHandler }) => {
     const { items: recentPlaylists } = useStoreState(
         (states) => states.recentPlaylist
     );
@@ -28,13 +29,20 @@ const RecentPlaylists = () => {
                 >
                     {recentPlaylists.map((playlistId) => (
                         <Grid item md={4} xs={4} key={playlistId}>
-                            <RecentItem data={playlists[playlistId]} />
+                            <RecentItem
+                                data={playlists[playlistId]}
+                                viewPlaylistHandler={viewPlaylistHandler}
+                            />
                         </Grid>
                     ))}
                 </Grid>
             </>
         )
     );
+};
+
+RecentPlaylists.propTypes = {
+    viewPlaylistHandler: PropTypes.func.isRequired,
 };
 
 export default RecentPlaylists;

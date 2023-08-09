@@ -14,11 +14,11 @@ import { format } from 'date-fns';
 import { useStoreActions } from 'easy-peasy';
 import PropTypes from 'prop-types';
 
-const PlaylistItem = ({ item }) => {
+const PlaylistItem = ({ data, viewPlaylistHandler }) => {
     const playlist = useStoreActions((actions) => actions.playlist);
 
     const toggleAddToFavorite = () => {
-        playlist.toggleFavorite(item.playlistId);
+        playlist.toggleFavorite(data.playlistId);
     };
 
     return (
@@ -26,8 +26,9 @@ const PlaylistItem = ({ item }) => {
             <Card sx={{ display: 'flex' }}>
                 <CardMedia
                     component="img"
-                    sx={{ height: '120px', width: '220px' }}
-                    image={item.playlistThumbnail.url}
+                    sx={{ height: '120px', width: '220px', cursor: 'pointer' }}
+                    image={data.playlistThumbnail.url}
+                    onClick={() => viewPlaylistHandler(data.playlistId)}
                 />
                 <Box
                     sx={{
@@ -42,8 +43,8 @@ const PlaylistItem = ({ item }) => {
                             variant="h5"
                             sx={{ fontWeight: 'bold' }}
                         >
-                            {item.playlistTitle.substring(0, 50)}
-                            {item.playlistTitle.length > 50 ? '...' : ''}
+                            {data.playlistTitle.substring(0, 50)}
+                            {data.playlistTitle.length > 50 ? '...' : ''}
                         </Typography>
                     </CardContent>
                     <Box
@@ -71,7 +72,7 @@ const PlaylistItem = ({ item }) => {
                                 color={grey[900]}
                             >
                                 <LiveTvIcon />
-                                <Box sx={{ ml: 1 }}>{item.channelTitle}</Box>
+                                <Box sx={{ ml: 1 }}>{data.channelTitle}</Box>
                             </Typography>
                             <Typography
                                 variant="caption"
@@ -80,11 +81,11 @@ const PlaylistItem = ({ item }) => {
                                 sx={{ mr: 1 }}
                             >
                                 {format(
-                                    new Date(item.playlistPublishedAt),
+                                    new Date(data.playlistPublishedAt),
                                     'MMMM dd, yyyy'
                                 )}
                                 {' - '}
-                                {item.items.length + ' Videos'}
+                                {data.items.length + ' Videos'}
                             </Typography>
                         </Box>
                         <Box
@@ -99,7 +100,7 @@ const PlaylistItem = ({ item }) => {
                                 size="medium"
                                 onClick={toggleAddToFavorite}
                             >
-                                {item.isFavorite ? (
+                                {data.isFavorite ? (
                                     <StarIcon />
                                 ) : (
                                     <StarBorderIcon />
@@ -110,6 +111,9 @@ const PlaylistItem = ({ item }) => {
                                 sx={{ px: 2 }}
                                 color="primary"
                                 startIcon={<OpenInNewIcon />}
+                                onClick={() =>
+                                    viewPlaylistHandler(data.playlistId)
+                                }
                             >
                                 View Playlist
                             </Button>
@@ -122,7 +126,8 @@ const PlaylistItem = ({ item }) => {
 };
 
 PlaylistItem.propTypes = {
-    item: PropTypes.object.isRequired,
+    data: PropTypes.object.isRequired,
+    viewPlaylistHandler: PropTypes.func.isRequired,
 };
 
 export default PlaylistItem;
