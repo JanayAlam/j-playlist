@@ -28,6 +28,7 @@ const PlaylistItem = ({ data, viewPlaylistHandler }) => {
                     component="img"
                     sx={{ height: '120px', width: '220px', cursor: 'pointer' }}
                     image={data.playlistThumbnail.url}
+                    title={data.playlistTitle}
                     onClick={() => viewPlaylistHandler(data.playlistId)}
                 />
                 <Box

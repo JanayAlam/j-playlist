@@ -4,7 +4,8 @@ import {
     getDataFromLocalStorage,
 } from '../../utils/local-storage-cashing';
 
-const LOCAL_STORAGE_KEY = 'JP_Recent_Playlists';
+const LOCAL_STORAGE_KEY = import.meta.env
+    .VITE_LOCAL_STORAGE_RECENT_PLAYLIST_KEY;
 
 const recentPlaylistModel = {
     items: [],

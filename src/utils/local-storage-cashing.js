@@ -13,12 +13,12 @@ export const getDataFromLocalStorage = (key) => {
 
 /**
  * Checks local storage if the given playlist is already on the local storage or not.
- * @param {String} key The key of the local storage's value.
  * @param {String} playlistId The playlist id of which will be checked.
  * @returns {Object} A object if the data is present in the local storage, otherwise null.
  */
-export const getPlaylistByIdFromLocalStorage = (key, playlistId) => {
-    const playlist = getPlaylistsFromLocalStorage(key);
+export const getPlaylistByIdFromLocalStorage = (playlistId) => {
+    const key = import.meta.env.VITE_LOCAL_STORAGE_PLAYLIST_KEY;
+    const playlist = getDataFromLocalStorage(key);
     if (!playlist) return null;
     return playlist[playlistId] ? playlist[playlistId] : null;
 };

@@ -5,7 +5,7 @@ import {
     getDataFromLocalStorage,
 } from '../../utils/local-storage-cashing';
 
-const LOCAL_STORAGE_KEY = 'JP_Playlists';
+const LOCAL_STORAGE_KEY = import.meta.env.VITE_LOCAL_STORAGE_PLAYLIST_KEY;
 
 const playlistModel = {
     // states
