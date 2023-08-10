@@ -35,7 +35,7 @@ const App = () => {
                 handleAddPlaylistModalOpen={handleAddPlaylistModalOpen}
                 handleAddPlaylistModalClose={handleAddPlaylistModalClose}
             />
-            <Container>
+            <Container maxWidth="lg">
                 <Routes>
                     <Route
                         path="/"

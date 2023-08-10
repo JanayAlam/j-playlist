@@ -24,7 +24,7 @@ const Navbar = ({
                 color="transparent"
                 sx={{ borderBottom: '1px solid #D4D4D4', boxShadow: 0 }}
             >
-                <Container>
+                <Container maxWidth="lg">
                     <Toolbar>
                         <Stack sx={{ flexGrow: 1 }}>
                             <Typography variant="h6" component="div">
