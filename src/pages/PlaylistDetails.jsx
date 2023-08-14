@@ -9,9 +9,10 @@ import blue from '@mui/material/colors/blue';
 import { useStoreActions } from 'easy-peasy';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import PlaylistDescriptionModal from '../components/playlist-description-modal';
 import ErrorComponent from '../components/ui/error';
 import LoadingPlaylist from '../components/ui/loading-playlist';
-import PlaylistDescriptionModal from '../components/ui/playlist-description-modal';
+import Video from '../components/video';
 import { getPlaylistByIdFromLocalStorage } from '../utils/local-storage-cashing';
 
 const PlaylistDetails = () => {
@@ -73,6 +74,7 @@ const PlaylistDetails = () => {
                     </Box>
                 </Box>
             </Box>
+            <Video channelTitle={data.channelTitle} items={data.items} />
             <PlaylistDescriptionModal
                 open={descriptionModalOpen}
                 handleClose={handleModalClose}

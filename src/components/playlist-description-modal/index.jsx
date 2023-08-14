@@ -1,6 +1,4 @@
 import CloseFullscreenIcon from '@mui/icons-material/CloseFullscreen';
-import Avatar from '@mui/material/Avatar';
-import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
@@ -10,8 +8,8 @@ import DialogTitle from '@mui/material/DialogTitle';
 import Divider from '@mui/material/Divider';
 import Typography from '@mui/material/Typography';
 import blue from '@mui/material/colors/blue';
-import { format } from 'date-fns';
 import PropTypes from 'prop-types';
+import ChannelInfoBox from '../shared/channel-info-box';
 
 const PlaylistDescriptionModal = ({ open, handleClose, data }) => {
     return (
@@ -20,27 +18,10 @@ const PlaylistDescriptionModal = ({ open, handleClose, data }) => {
                 {data.playlistTitle}
             </DialogTitle>
             <DialogContent>
-                <Box sx={{ display: 'flex', alignItems: 'center' }}>
-                    <Avatar
-                        sx={{ bgcolor: blue[500], mr: 2 }}
-                        variant="rounded"
-                    >
-                        {data.channelTitle.substring(0, 1)}
-                    </Avatar>
-                    <Box>
-                        <Typography variant="h6" component="h6" sx={{ mb: 0 }}>
-                            {data.channelTitle}
-                        </Typography>
-                        <Typography
-                            variant="caption"
-                            component="div"
-                            sx={{ mt: 0 }}
-                        >
-                            Playlist published at{' '}
-                            {format(new Date(data.playlistPublishedAt), 'PPpp')}
-                        </Typography>
-                    </Box>
-                </Box>
+                <ChannelInfoBox
+                    channelTitle={data.channelTitle}
+                    publishedAt={data.playlistPublishedAt}
+                />
                 <Divider />
                 <Typography
                     variant="body1"
