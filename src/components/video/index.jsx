@@ -21,7 +21,7 @@ const Video = ({ channelTitle, items }) => {
 
     return (
         <Grid container spacing={2}>
-            <Grid item md={8}>
+            <Grid item md={8} sm={12}>
                 {isLoading ? (
                     <Skeleton
                         variant="rectangular"
@@ -35,7 +35,7 @@ const Video = ({ channelTitle, items }) => {
                     />
                 )}
             </Grid>
-            <Grid item md={4}>
+            <Grid item md={4} sm={12}>
                 <Stack spacing={1}>
                     {isLoading ? (
                         <>
