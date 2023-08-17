@@ -22,6 +22,7 @@ const PlaylistDetails = () => {
     const [descriptionModalOpen, setDescriptionModalOpen] = useState(false);
 
     const playlist = useStoreActions((actions) => actions.playlist);
+    const recentPlaylist = useStoreActions((actions) => actions.recentPlaylist);
 
     /**
      * Toggle favorite playlist handler.
@@ -32,6 +33,9 @@ const PlaylistDetails = () => {
         setData(getPlaylistByIdFromLocalStorage(playlistId));
     };
 
+    /**
+     * Close description modal handler.
+     */
     const handleModalClose = () => {
         setDescriptionModalOpen(false);
     };
@@ -39,6 +43,7 @@ const PlaylistDetails = () => {
     useEffect(() => {
         setData(getPlaylistByIdFromLocalStorage(playlistId) || null);
         setIsLoading(false);
+        recentPlaylist.addToRecentItems(playlistId);
     }, []);
 
     return isLoading ? (

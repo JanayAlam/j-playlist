@@ -16,7 +16,10 @@ const recentPlaylistModel = {
          * @param {String} payload PLaylist id.
          */
         (state, payload) => {
-            if (state.items.includes(payload)) return;
+            if (state.items.includes(payload)) {
+                if (state.items[0] === payload) return;
+                state.items = state.items.filter((item) => item !== payload);
+            }
             if (state.items.length === 3) state.items.pop();
             state.items.unshift(payload);
             cacheData(LOCAL_STORAGE_KEY, state.items);
