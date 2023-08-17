@@ -6,7 +6,8 @@ The YouTube video suggestion system makes watching a collection of videos distra
 
 To run the application on your localhost just run the following commands in your terminal (for Powershell/Git bash).
 
-```git clone https://github.com/JanayAlam/j-playlist.git
+```
+git clone https://github.com/JanayAlam/j-playlist.git
 cd j-playlist
 copy default.env .env
 ```
@@ -15,7 +16,8 @@ Now you need google developer api key for running the application. Go to [Google
 
 Now run the following commands to install the required packages and run the application.
 
-```yarn
+```
+yarn
 yarn run dev
 ```
 
