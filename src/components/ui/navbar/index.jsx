@@ -10,73 +10,60 @@ import { grey } from '@mui/material/colors';
 import PropTypes from 'prop-types';
 import { Link as RouterLink } from 'react-router-dom';
 import logo from '../../../assets/logo.png';
-import AddPlaylistModal from '../../add-playlist-modal';
 
-const Navbar = ({
-    addPlaylistModalOpen,
-    handleAddPlaylistModalOpen,
-    handleAddPlaylistModalClose,
-}) => {
+const Navbar = ({ handleAddPlaylistModalOpen }) => {
     return (
-        <>
-            <AppBar
-                position="static"
-                color="transparent"
-                sx={{ borderBottom: '1px solid #D4D4D4', boxShadow: 0 }}
-            >
-                <Container maxWidth="lg">
-                    <Toolbar>
-                        <Stack sx={{ flexGrow: 1 }}>
-                            <Typography variant="h6" component="div">
-                                <Link
-                                    to="/"
-                                    sx={{
-                                        textDecoration: 'none',
-                                        display: 'flex',
-                                        alignItems: 'center',
+        <AppBar
+            position="static"
+            color="transparent"
+            sx={{ borderBottom: '1px solid #D4D4D4', boxShadow: 0 }}
+        >
+            <Container maxWidth="lg">
+                <Toolbar>
+                    <Stack sx={{ flexGrow: 1 }}>
+                        <Typography variant="h6" component="div">
+                            <Link
+                                to="/"
+                                sx={{
+                                    textDecoration: 'none',
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                }}
+                                component={RouterLink}
+                                color={grey[900]}
+                            >
+                                <img
+                                    src={logo}
+                                    alt="Logo"
+                                    style={{
+                                        height: '50px',
+                                        marginRight: '0.5rem',
                                     }}
-                                    component={RouterLink}
-                                    color={grey[900]}
+                                />
+                                <Typography
+                                    sx={{ ml: 1, fontWeight: 'bold' }}
+                                    variant="h6"
+                                    component="div"
                                 >
-                                    <img
-                                        src={logo}
-                                        alt="Logo"
-                                        style={{
-                                            height: '50px',
-                                            marginRight: '0.5rem',
-                                        }}
-                                    />
-                                    <Typography
-                                        sx={{ ml: 1, fontWeight: 'bold' }}
-                                        variant="h6"
-                                        component="div"
-                                    >
-                                        J Playlist
-                                    </Typography>
-                                </Link>
-                            </Typography>
-                        </Stack>
-                        <IconButton
-                            color="primary"
-                            onClick={handleAddPlaylistModalOpen}
-                        >
-                            <AddIcon />
-                        </IconButton>
-                    </Toolbar>
-                </Container>
-            </AppBar>
-            <AddPlaylistModal
-                open={addPlaylistModalOpen}
-                handleClose={handleAddPlaylistModalClose}
-            />
-        </>
+                                    J Playlist
+                                </Typography>
+                            </Link>
+                        </Typography>
+                    </Stack>
+                    <IconButton
+                        color="primary"
+                        onClick={handleAddPlaylistModalOpen}
+                    >
+                        <AddIcon />
+                    </IconButton>
+                </Toolbar>
+            </Container>
+        </AppBar>
     );
 };
 
 Navbar.propTypes = {
-    addPlaylistModalOpen: PropTypes.bool.isRequired,
     handleAddPlaylistModalOpen: PropTypes.func.isRequired,
-    handleAddPlaylistModalClose: PropTypes.func.isRequired,
 };
 
 export default Navbar;
