@@ -1,0 +1,13 @@
+.alertContainer {
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    z-index: 100;
+    right: 0;
+    margin-right: 1rem;
+}
+
+.alertBox {
+    margin-top: 0.5rem;
+    min-width: 500px;
+}

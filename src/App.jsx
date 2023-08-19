@@ -1,16 +1,22 @@
 import Container from '@mui/material/Container';
 import CssBaseline from '@mui/material/CssBaseline';
-import { useStoreActions } from 'easy-peasy';
+import { useStoreActions, useStoreState } from 'easy-peasy';
 import { useEffect, useState } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import AlertBox from './components/ui/alert-box';
 import ErrorComponent from './components/ui/error';
 import Navbar from './components/ui/navbar';
 import Homepage from './pages/Homepage';
 import PlaylistDetails from './pages/PlaylistDetails.jsx';
 
 const App = () => {
-    const playlist = useStoreActions((actions) => actions.playlist);
-    const recentPlaylist = useStoreActions((actions) => actions.recentPlaylist);
+    const { error: playlistError } = useStoreState((states) => states.playlist);
+
+    const playlistAction = useStoreActions((actions) => actions.playlist);
+    const recentPlaylistAction = useStoreActions(
+        (actions) => actions.recentPlaylist
+    );
+    const feedbackActions = useStoreActions((actions) => actions.feedback);
 
     const [addPlaylistModalOpen, setAddPlaylistModalOpen] = useState(false);
 
@@ -23,9 +29,16 @@ const App = () => {
     };
 
     useEffect(() => {
-        playlist.loadLocalStorage();
-        recentPlaylist.loadLocalStorage();
+        playlistAction.loadLocalStorage();
+        recentPlaylistAction.loadLocalStorage();
     }, []);
+
+    useEffect(() => {
+        if (playlistError) {
+            feedbackActions.addFeedback({ type: 'error', msg: playlistError });
+            playlistAction.setError('');
+        }
+    }, [playlistError]);
 
     return (
         <BrowserRouter>
@@ -35,6 +48,7 @@ const App = () => {
                 handleAddPlaylistModalOpen={handleAddPlaylistModalOpen}
                 handleAddPlaylistModalClose={handleAddPlaylistModalClose}
             />
+            <AlertBox />
             <Container maxWidth="lg">
                 <Routes>
                     <Route

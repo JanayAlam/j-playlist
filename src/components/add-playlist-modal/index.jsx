@@ -1,5 +1,5 @@
 import { yupResolver } from '@hookform/resolvers/yup';
-import { Alert, Box, Container } from '@mui/material';
+import { Box } from '@mui/material';
 import Button from '@mui/material/Button';
 import CircularProgress from '@mui/material/CircularProgress';
 import Dialog from '@mui/material/Dialog';
@@ -13,6 +13,7 @@ import PropTypes from 'prop-types';
 import { Controller, useForm } from 'react-hook-form';
 import * as Yup from 'yup';
 import { getPlaylistIdFromString } from '../../utils/playlist-id-parser';
+import AlertBox from '../ui/alert-box';
 
 Yup.addMethod(Yup.string, 'validPlaylistLinkOrId', function (errorMessage) {
     // https://stackoverflow.com/a/63769828
@@ -57,9 +58,7 @@ const AddPlaylistModal = ({ open, handleClose }) => {
         (states) => states.playlist
     );
     const playlistActions = useStoreActions((actions) => actions.playlist);
-    const recentPlaylistActions = useStoreActions(
-        (actions) => actions.recentPlaylist
-    );
+    const feedbackActions = useStoreActions((actions) => actions.feedback);
 
     const clearErrorMessage = () => {
         playlistActions.setError('');
@@ -67,21 +66,19 @@ const AddPlaylistModal = ({ open, handleClose }) => {
 
     const onSubmitHandler = async (data) => {
         const playlistId = getPlaylistIdFromString(data.playlistLinkOrId);
-        await playlistActions.fetchPlaylist(playlistId);
-        recentPlaylistActions.addToRecentItems(playlistId);
+        const result = await playlistActions.fetchPlaylist(playlistId);
+        if (result)
+            feedbackActions.addFeedback({
+                type: 'success',
+                msg: 'Playlist has been successfully added',
+            });
         reset();
         handleClose();
     };
 
     return (
         <>
-            {playlistError && (
-                <Container maxWidth="lg" sx={{ my: '0.5rem' }}>
-                    <Alert severity="error" onClose={clearErrorMessage}>
-                        {playlistError}
-                    </Alert>
-                </Container>
-            )}
+            {playlistError && <AlertBox />}
             <Dialog open={open} onClose={handleClose}>
                 <DialogTitle>Add Playlist</DialogTitle>
                 <form onSubmit={handleSubmit(onSubmitHandler)}>

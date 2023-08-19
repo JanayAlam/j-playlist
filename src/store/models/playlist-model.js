@@ -71,19 +71,20 @@ const playlistModel = {
          * @param {Object} actions Playlist's actions from easy peasy.
          * @param {String} payload Playlist id.
          * @param {Object} helper Helper object from easy peasy.
+         * @returns {Boolean} Returns true if the playlist is successfully added otherwise it returns false.
          */
         async (actions, payload, helper) => {
             const { addPlaylist, setError, setIsFetchPlaylistLoading } =
                 actions;
             const { getState } = helper;
-
-            if (getState().data[payload]) return;
-            setIsFetchPlaylistLoading(true);
-
             try {
+                if (getState().data[payload]) {
+                    throw new Error('Playlist has been already added');
+                }
+                setIsFetchPlaylistLoading(true);
                 const playlistData = await getPlaylistById(payload);
                 if (playlistData?.items?.length === 0) {
-                    throw new Error('Playlist not found');
+                    throw new Error('Playlist has no videos');
                 }
                 addPlaylist(playlistData);
                 cacheData(LOCAL_STORAGE_KEY, getState().data);
@@ -91,9 +92,11 @@ const playlistModel = {
                 const errMessage =
                     err.response?.data?.error?.message || err.message;
                 setError(errMessage || 'Something went wrong');
+                return false;
             } finally {
                 setIsFetchPlaylistLoading(false);
             }
+            return true;
         }
     ),
 };
