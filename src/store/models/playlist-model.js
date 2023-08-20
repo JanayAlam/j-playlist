@@ -43,17 +43,6 @@ const playlistModel = {
             state.isFetchPlaylistLoading = !!payload;
         }
     ),
-    toggleFavorite: action(
-        /**
-         * Toggle the playlist in the favorite list.
-         * @param {Object} state Playlist's states provided by easy peasy.
-         * @param {*} payload Playlist id.
-         */
-        (state, payload) => {
-            state.data[payload].isFavorite = !state.data[payload].isFavorite;
-            cacheData(LOCAL_STORAGE_KEY, state.data);
-        }
-    ),
     loadLocalStorage: action(
         /**
          * Load playlist object from local storage.

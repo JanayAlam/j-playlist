@@ -3,8 +3,18 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import PropTypes from 'prop-types';
+import { useNavigate } from 'react-router-dom';
 
-const RecentItem = ({ data, viewPlaylistHandler }) => {
+const RecentItem = ({ data }) => {
+    const navigate = useNavigate();
+
+    /**
+     * Navigate to the selected playlist details page,
+     * @param {String} playlistId The selected playlist id
+     */
+    const viewPlaylistHandler = (playlistId) => {
+        navigate(`/playlist/${playlistId}`);
+    };
     return (
         data && (
             <Card
@@ -36,7 +46,6 @@ const RecentItem = ({ data, viewPlaylistHandler }) => {
 
 RecentItem.propTypes = {
     data: PropTypes.object.isRequired,
-    viewPlaylistHandler: PropTypes.func.isRequired,
 };
 
 export default RecentItem;

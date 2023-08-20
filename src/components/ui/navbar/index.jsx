@@ -1,26 +1,33 @@
 import AddIcon from '@mui/icons-material/Add';
 import AppBar from '@mui/material/AppBar';
+import Box from '@mui/material/Box';
+import Button from '@mui/material/Button';
 import Container from '@mui/material/Container';
-import IconButton from '@mui/material/IconButton';
 import Link from '@mui/material/Link';
 import Stack from '@mui/material/Stack';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
-import { grey } from '@mui/material/colors';
+import grey from '@mui/material/colors/grey';
 import PropTypes from 'prop-types';
-import { Link as RouterLink } from 'react-router-dom';
+import { Link as RouterLink, useLocation } from 'react-router-dom';
 import logo from '../../../assets/logo.png';
 
 const Navbar = ({ handleAddPlaylistModalOpen }) => {
+    const { pathname } = useLocation();
+
     return (
         <AppBar
-            position="static"
-            color="transparent"
+            position="sticky"
+            color="inherit"
             sx={{ borderBottom: '1px solid #D4D4D4', boxShadow: 0 }}
         >
-            <Container maxWidth="lg">
+            <Container>
                 <Toolbar>
-                    <Stack sx={{ flexGrow: 1 }}>
+                    <Stack
+                        sx={{ flexGrow: 1, alignItems: 'center', px: 0 }}
+                        direction="row"
+                        spacing={2}
+                    >
                         <Typography variant="h6" component="div">
                             <Link
                                 to="/"
@@ -41,7 +48,7 @@ const Navbar = ({ handleAddPlaylistModalOpen }) => {
                                     }}
                                 />
                                 <Typography
-                                    sx={{ ml: 1, fontWeight: 'bold' }}
+                                    sx={{ fontWeight: 'bold' }}
                                     variant="h6"
                                     component="div"
                                 >
@@ -49,13 +56,44 @@ const Navbar = ({ handleAddPlaylistModalOpen }) => {
                                 </Typography>
                             </Link>
                         </Typography>
+                        <Box
+                            sx={{
+                                display: 'flex',
+                                alignItems: 'center',
+                                gap: 1,
+                            }}
+                        >
+                            <Button
+                                size="small"
+                                color={pathname === '/' ? 'primary' : 'inherit'}
+                                to={'/'}
+                                component={RouterLink}
+                            >
+                                All Playlists
+                            </Button>
+                            <Button
+                                size="small"
+                                color={
+                                    pathname === '/favorites'
+                                        ? 'primary'
+                                        : 'inherit'
+                                }
+                                to={'/favorites'}
+                                component={RouterLink}
+                            >
+                                Favorites
+                            </Button>
+                        </Box>
                     </Stack>
-                    <IconButton
+                    <Button
+                        size="small"
                         color="primary"
                         onClick={handleAddPlaylistModalOpen}
+                        startIcon={<AddIcon />}
+                        variant="outlined"
                     >
-                        <AddIcon />
-                    </IconButton>
+                        Add Playlist
+                    </Button>
                 </Toolbar>
             </Container>
         </AppBar>

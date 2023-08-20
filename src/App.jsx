@@ -8,6 +8,7 @@ import AddPlaylistModal from './components/add-playlist-modal';
 import AlertBox from './components/ui/alert-box';
 import ErrorComponent from './components/ui/error';
 import Navbar from './components/ui/navbar';
+import Favorites from './pages/Favorites';
 import Homepage from './pages/Homepage';
 import PlaylistDetails from './pages/PlaylistDetails.jsx';
 
@@ -21,7 +22,7 @@ const App = () => {
     const feedbackActions = useStoreActions((actions) => actions.feedback);
 
     const [addPlaylistModalOpen, setAddPlaylistModalOpen] = useState(false);
-    const [isAppLoading, setIsAppLoading] = useState(true);
+    const [isPageLoading, setIsPageLoading] = useState(true);
 
     const handleAddPlaylistModalOpen = () => {
         setAddPlaylistModalOpen(true);
@@ -31,10 +32,18 @@ const App = () => {
         setAddPlaylistModalOpen(false);
     };
 
+    const startPageLoadingHandler = () => {
+        setIsPageLoading(true);
+    };
+
+    const stopPageLoadingHandler = () => {
+        setIsPageLoading(false);
+    };
+
     useEffect(() => {
         playlistAction.loadLocalStorage();
         recentPlaylistAction.loadLocalStorage();
-        setIsAppLoading(false);
+        stopPageLoadingHandler();
     }, []);
 
     useEffect(() => {
@@ -49,7 +58,7 @@ const App = () => {
             <CssBaseline />
             <Navbar handleAddPlaylistModalOpen={handleAddPlaylistModalOpen} />
             <AlertBox />
-            {isAppLoading ? (
+            {isPageLoading ? (
                 <LinearProgress />
             ) : (
                 <Container maxWidth="lg">
@@ -60,6 +69,19 @@ const App = () => {
                                 <Homepage
                                     handleAddPlaylistModalOpen={
                                         handleAddPlaylistModalOpen
+                                    }
+                                />
+                            }
+                        />
+                        <Route
+                            path="/favorites"
+                            element={
+                                <Favorites
+                                    startPageLoadingHandler={
+                                        startPageLoadingHandler
+                                    }
+                                    stopPageLoadingHandler={
+                                        stopPageLoadingHandler
                                     }
                                 />
                             }

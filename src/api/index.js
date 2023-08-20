@@ -46,7 +46,6 @@ const _getPlaylistItems = async (
  * }
  */
 const getPlaylistById = async (playlistId) => {
-    // TODO: Check if the playlist is already in the local storage or not.
     const parts = ['id', 'contentDetails', 'snippet'];
     const URL = `${BASE_URL}/playlists?part=${parts.join(
         '%2C'
@@ -65,7 +64,7 @@ const getPlaylistById = async (playlistId) => {
 
         const playlistItems = await _getPlaylistItems(playlistId);
 
-        const items = playlistItems.map((item) => {
+        const items = playlistItems.map((item, idx) => {
             const {
                 title: videoTitle,
                 description: videoDescription,
@@ -73,6 +72,7 @@ const getPlaylistById = async (playlistId) => {
             } = item.snippet;
             const { videoId, videoPublishedAt } = item.contentDetails;
             return {
+                sequence: ++idx,
                 videoId,
                 videoTitle,
                 videoDescription,
@@ -90,7 +90,6 @@ const getPlaylistById = async (playlistId) => {
             playlistPublishedAt,
             playlistThumbnail: playlistThumbnails.high,
             items,
-            isFavorite: false,
         };
     } catch (err) {
         if (err instanceof TypeError) {

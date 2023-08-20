@@ -10,26 +10,28 @@ const EmptyPlaylist = ({ handleAddPlaylistModalOpen }) => (
         <Box sx={{ mx: 'auto' }}>
             <img src={EmptyBox} alt="Empty logo" height={300} width={300} />
         </Box>
-        <Box
-            sx={{
-                display: 'flex',
-                justifyContent: 'center',
-                alignItems: 'center',
-            }}
-        >
-            <Button
-                variant="contained"
-                startIcon={<AddLinkIcon />}
-                onClick={handleAddPlaylistModalOpen}
+        {handleAddPlaylistModalOpen && (
+            <Box
+                sx={{
+                    display: 'flex',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                }}
             >
-                Add Playlist
-            </Button>
-        </Box>
+                <Button
+                    variant="contained"
+                    startIcon={<AddLinkIcon />}
+                    onClick={handleAddPlaylistModalOpen}
+                >
+                    Add Playlist
+                </Button>
+            </Box>
+        )}
     </Stack>
 );
 
 EmptyPlaylist.propTypes = {
-    handleAddPlaylistModalOpen: PropTypes.func.isRequired,
+    handleAddPlaylistModalOpen: PropTypes.func,
 };
 
 export default EmptyPlaylist;

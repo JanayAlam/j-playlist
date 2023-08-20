@@ -11,14 +11,40 @@ import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import { grey } from '@mui/material/colors';
 import { format } from 'date-fns';
-import { useStoreActions } from 'easy-peasy';
+import { useStoreActions, useStoreState } from 'easy-peasy';
 import PropTypes from 'prop-types';
+import { useNavigate } from 'react-router-dom';
 
-const PlaylistItem = ({ data, viewPlaylistHandler }) => {
-    const playlist = useStoreActions((actions) => actions.playlist);
+const PlaylistItem = ({ data }) => {
+    const navigate = useNavigate();
 
-    const toggleAddToFavorite = () => {
-        playlist.toggleFavorite(data.playlistId);
+    const { items } = useStoreState((states) => states.favoritePlaylist);
+    const favoritePlaylistAction = useStoreActions(
+        (actions) => actions.favoritePlaylist
+    );
+
+    const toggleFavorite = () => {
+        const playlistId = data.playlistId;
+        if (items.includes(playlistId)) {
+            return removeFromFavorite(playlistId);
+        }
+        addToFavorite(playlistId);
+    };
+
+    const addToFavorite = (playlistId) => {
+        favoritePlaylistAction.addToFavoriteItems(playlistId);
+    };
+
+    const removeFromFavorite = (playlistId) => {
+        favoritePlaylistAction.removeFromFavoriteItems(playlistId);
+    };
+
+    /**
+     * Navigate to the selected playlist details page,
+     * @param {String} playlistId The selected playlist id
+     */
+    const viewPlaylistHandler = (playlistId) => {
+        navigate(`/playlist/${playlistId}`);
     };
 
     return (
@@ -99,9 +125,9 @@ const PlaylistItem = ({ data, viewPlaylistHandler }) => {
                             <IconButton
                                 color="primary"
                                 size="medium"
-                                onClick={toggleAddToFavorite}
+                                onClick={toggleFavorite}
                             >
-                                {data.isFavorite ? (
+                                {items.includes(data.playlistId) ? (
                                     <StarIcon />
                                 ) : (
                                     <StarBorderIcon />
@@ -128,7 +154,6 @@ const PlaylistItem = ({ data, viewPlaylistHandler }) => {
 
 PlaylistItem.propTypes = {
     data: PropTypes.object.isRequired,
-    viewPlaylistHandler: PropTypes.func.isRequired,
 };
 
 export default PlaylistItem;
