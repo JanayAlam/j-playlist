@@ -88,7 +88,7 @@ const getPlaylistById = async (playlistId) => {
             playlistTitle,
             playlistDescription,
             playlistPublishedAt,
-            playlistThumbnail: playlistThumbnails.high,
+            playlistThumbnail: playlistThumbnails.medium,
             items,
         };
     } catch (err) {

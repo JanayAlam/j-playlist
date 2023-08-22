@@ -3,7 +3,7 @@ import { useStoreState } from 'easy-peasy';
 import PropTypes from 'prop-types';
 import Playlists from '../components/playlists';
 import RecentPlaylists from '../components/recent-playlists';
-import EmptyPlaylist from '../components/ui/empty-playlist';
+import Empty from '../components/ui/empty';
 import { mapObjectToArray } from '../utils/object-array-mapper';
 
 const Homepage = ({ handleAddPlaylistModalOpen }) => {
@@ -16,9 +16,7 @@ const Homepage = ({ handleAddPlaylistModalOpen }) => {
             <Playlists playlistsArr={mapObjectToArray(playlistData)} />
         </>
     ) : (
-        <EmptyPlaylist
-            handleAddPlaylistModalOpen={handleAddPlaylistModalOpen}
-        />
+        <Empty handleAddPlaylistModalOpen={handleAddPlaylistModalOpen} />
     );
 };
 

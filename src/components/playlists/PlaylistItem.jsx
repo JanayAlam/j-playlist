@@ -1,4 +1,4 @@
-import DeleteIcon from '@mui/icons-material/Delete';
+import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 import LiveTvIcon from '@mui/icons-material/LiveTv';
 import OpenInNewIcon from '@mui/icons-material/OpenInNew';
 import StarIcon from '@mui/icons-material/Star';
@@ -10,7 +10,7 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
-import { grey } from '@mui/material/colors';
+import { grey, orange } from '@mui/material/colors';
 import { format } from 'date-fns';
 import { useStoreActions, useStoreState } from 'easy-peasy';
 import PropTypes from 'prop-types';
@@ -38,17 +38,9 @@ const PlaylistItem = ({ data, deletable }) => {
     const toggleFavorite = () => {
         const playlistId = data.playlistId;
         if (items.includes(playlistId)) {
-            return removeFromFavorite(playlistId);
+            return favoritePlaylistAction.removeFromFavoriteItems(playlistId);
         }
-        addToFavorite(playlistId);
-    };
-
-    const addToFavorite = (playlistId) => {
         favoritePlaylistAction.addToFavoriteItems(playlistId);
-    };
-
-    const removeFromFavorite = (playlistId) => {
-        favoritePlaylistAction.removeFromFavoriteItems(playlistId);
     };
 
     /**
@@ -64,7 +56,11 @@ const PlaylistItem = ({ data, deletable }) => {
             <Card sx={{ display: 'flex' }}>
                 <CardMedia
                     component="img"
-                    sx={{ height: '120px', width: '220px', cursor: 'pointer' }}
+                    sx={{
+                        height: data.playlistThumbnail.height / 1.5,
+                        width: data.playlistThumbnail.width / 1.5,
+                        cursor: 'pointer',
+                    }}
                     image={data.playlistThumbnail.url}
                     title={data.playlistTitle}
                     onClick={() => viewPlaylistHandler(data.playlistId)}
@@ -140,7 +136,7 @@ const PlaylistItem = ({ data, deletable }) => {
                                     size="medium"
                                     onClick={handleDeleteModalOpen}
                                 >
-                                    <DeleteIcon />
+                                    <DeleteOutlineIcon />
                                 </IconButton>
                             )}
                             <IconButton
@@ -149,9 +145,11 @@ const PlaylistItem = ({ data, deletable }) => {
                                 onClick={toggleFavorite}
                             >
                                 {items.includes(data.playlistId) ? (
-                                    <StarIcon />
+                                    <StarIcon sx={{ color: orange[500] }} />
                                 ) : (
-                                    <StarBorderIcon />
+                                    <StarBorderIcon
+                                        sx={{ color: orange[500] }}
+                                    />
                                 )}
                             </IconButton>
                             <Button

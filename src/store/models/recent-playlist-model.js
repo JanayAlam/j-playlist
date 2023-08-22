@@ -25,6 +25,17 @@ const recentPlaylistModel = {
             cacheData(LOCAL_STORAGE_KEY, state.items);
         }
     ),
+    removeFromRecentItems: action(
+        /**
+         * Remove the playlist from the recent playlists array.
+         * @param {Object} actions Playlist's actions from easy peasy.
+         * @param {String} payload PLaylist id.
+         */
+        (state, payload) => {
+            state.items = state.items.filter((item) => item !== payload);
+            cacheData(LOCAL_STORAGE_KEY, state.items);
+        }
+    ),
     loadLocalStorage: action(
         /**
          * Load recent playlist from local storage.

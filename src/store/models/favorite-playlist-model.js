@@ -5,7 +5,7 @@ import {
 } from '../../utils/local-storage-cashing';
 
 const LOCAL_STORAGE_KEY = import.meta.env
-    .VITE_LOCAL_STORAGE_RECENT_PLAYLIST_KEY;
+    .VITE_LOCAL_STORAGE_FAVORITE_PLAYLIST_KEY;
 
 const favoritePlaylistModel = {
     items: [],
