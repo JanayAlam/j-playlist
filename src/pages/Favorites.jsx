@@ -2,7 +2,7 @@ import { useStoreState } from 'easy-peasy';
 import PropTypes from 'prop-types';
 import { useEffect, useState } from 'react';
 import Playlists from '../components/playlists';
-import EmptyPlaylist from '../components/ui/empty-playlist';
+import Empty from '../components/ui/empty';
 
 const Favorites = ({ startPageLoadingHandler, stopPageLoadingHandler }) => {
     const { data: playlists } = useStoreState((states) => states.playlist);
@@ -23,7 +23,7 @@ const Favorites = ({ startPageLoadingHandler, stopPageLoadingHandler }) => {
     return favoritePlaylistItems.length > 0 ? (
         <Playlists playlistsArr={state} deletable={false} />
     ) : (
-        <EmptyPlaylist />
+        <Empty />
     );
 };
 

@@ -11,6 +11,7 @@ import Navbar from './components/ui/navbar';
 import Favorites from './pages/Favorites';
 import Homepage from './pages/Homepage';
 import PlaylistDetails from './pages/PlaylistDetails.jsx';
+import Video from './pages/Video';
 
 const App = () => {
     const { error: playlistError } = useStoreState((states) => states.playlist);
@@ -18,6 +19,9 @@ const App = () => {
     const playlistAction = useStoreActions((actions) => actions.playlist);
     const recentPlaylistAction = useStoreActions(
         (actions) => actions.recentPlaylist
+    );
+    const favoritePlaylistAction = useStoreActions(
+        (actions) => actions.favoritePlaylist
     );
     const feedbackActions = useStoreActions((actions) => actions.feedback);
 
@@ -43,6 +47,7 @@ const App = () => {
     useEffect(() => {
         playlistAction.loadLocalStorage();
         recentPlaylistAction.loadLocalStorage();
+        favoritePlaylistAction.loadLocalStorage();
         stopPageLoadingHandler();
     }, []);
 
@@ -89,6 +94,19 @@ const App = () => {
                         <Route
                             path="/playlist/:playlistId"
                             element={<PlaylistDetails />}
+                        />
+                        <Route
+                            path="/playlist/:playlistId/v"
+                            element={
+                                <Video
+                                    startPageLoadingHandler={
+                                        startPageLoadingHandler
+                                    }
+                                    stopPageLoadingHandler={
+                                        stopPageLoadingHandler
+                                    }
+                                />
+                            }
                         />
                         <Route
                             path="*"

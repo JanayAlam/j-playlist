@@ -11,19 +11,29 @@ import { useStoreActions } from 'easy-peasy';
 import PropTypes from 'prop-types';
 import { useState } from 'react';
 
-const DeletePlaylistBox = ({ playlistId, open, handleClose }) => {
+const DeletePlaylistBox = ({
+    playlistId,
+    open,
+    handleClose,
+    handleSubmitCb,
+}) => {
     const [isLoading, setIsLoading] = useState(false);
 
     const playlistAction = useStoreActions((actions) => actions.playlist);
+    const recentPlaylistAction = useStoreActions(
+        (actions) => actions.recentPlaylist
+    );
     const favoritePlaylistAction = useStoreActions(
         (actions) => actions.favoritePlaylist
     );
 
-    const handleSubmit = () => {
+    const handleDelete = () => {
         setIsLoading(true);
         playlistAction.removePlaylist(playlistId);
+        recentPlaylistAction.removeFromRecentItems(playlistId);
         favoritePlaylistAction.removeFromFavoriteItems(playlistId);
         setIsLoading(false);
+        if (handleSubmitCb) handleSubmitCb();
     };
 
     return (
@@ -61,7 +71,7 @@ const DeletePlaylistBox = ({ playlistId, open, handleClose }) => {
                     </Button>
                 ) : (
                     <Button
-                        onClick={handleSubmit}
+                        onClick={handleDelete}
                         autoFocus
                         variant="contained"
                         color="error"
@@ -79,6 +89,7 @@ DeletePlaylistBox.propTypes = {
     playlistId: PropTypes.string.isRequired,
     open: PropTypes.bool.isRequired,
     handleClose: PropTypes.func.isRequired,
+    handleSubmitCb: PropTypes.func,
 };
 
 export default DeletePlaylistBox;
