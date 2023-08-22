@@ -1,3 +1,4 @@
+import DeleteIcon from '@mui/icons-material/Delete';
 import LiveTvIcon from '@mui/icons-material/LiveTv';
 import OpenInNewIcon from '@mui/icons-material/OpenInNew';
 import StarIcon from '@mui/icons-material/Star';
@@ -13,10 +14,21 @@ import { grey } from '@mui/material/colors';
 import { format } from 'date-fns';
 import { useStoreActions, useStoreState } from 'easy-peasy';
 import PropTypes from 'prop-types';
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import DeletePlaylistBox from '../shared/delete-playlist-modal';
 
-const PlaylistItem = ({ data }) => {
+const PlaylistItem = ({ data, deletable }) => {
     const navigate = useNavigate();
+    const [deleteModalOpen, setDeleteModalOpen] = useState(false);
+
+    const handleDeleteModalOpen = () => {
+        setDeleteModalOpen(true);
+    };
+
+    const handleDeleteModalClose = () => {
+        setDeleteModalOpen(false);
+    };
 
     const { items } = useStoreState((states) => states.favoritePlaylist);
     const favoritePlaylistAction = useStoreActions(
@@ -122,6 +134,15 @@ const PlaylistItem = ({ data }) => {
                                 gap: 1,
                             }}
                         >
+                            {deletable && (
+                                <IconButton
+                                    color="error"
+                                    size="medium"
+                                    onClick={handleDeleteModalOpen}
+                                >
+                                    <DeleteIcon />
+                                </IconButton>
+                            )}
                             <IconButton
                                 color="primary"
                                 size="medium"
@@ -148,12 +169,18 @@ const PlaylistItem = ({ data }) => {
                     </Box>
                 </Box>
             </Card>
+            <DeletePlaylistBox
+                playlistId={data.playlistId}
+                open={deleteModalOpen}
+                handleClose={handleDeleteModalClose}
+            />
         </Box>
     );
 };
 
 PlaylistItem.propTypes = {
     data: PropTypes.object.isRequired,
+    deletable: PropTypes.bool,
 };
 
 export default PlaylistItem;

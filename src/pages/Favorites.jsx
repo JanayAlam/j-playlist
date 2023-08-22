@@ -21,7 +21,7 @@ const Favorites = ({ startPageLoadingHandler, stopPageLoadingHandler }) => {
     }, [favoritePlaylistItems]);
 
     return favoritePlaylistItems.length > 0 ? (
-        <Playlists playlistsArr={state} />
+        <Playlists playlistsArr={state} deletable={false} />
     ) : (
         <EmptyPlaylist />
     );

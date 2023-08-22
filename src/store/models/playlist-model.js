@@ -23,6 +23,17 @@ const playlistModel = {
             state.data[payload.playlistId] = payload;
         }
     ),
+    removePlaylist: action(
+        /**
+         * Remove playlist from the playlist state.
+         * @param {Object} state Playlist's states provided by easy peasy.
+         * @param {String} payload The playlist object.
+         */
+        (state, payload) => {
+            delete state.data[payload];
+            cacheData(LOCAL_STORAGE_KEY, state.data);
+        }
+    ),
     setError: action(
         /**
          * Set error value.
