@@ -20,7 +20,7 @@ const _getPlaylistItems = async (
     const MAX_RESULTS = 50;
     const URL = `${BASE_URL}/playlistItems?part=${parts.join(
         '%2C'
-    )}&playlistId=${playlistId}&maxResults=${MAX_RESULTS}&key=${API_KEY}&nextPageToken=${nextPageToken}`;
+    )}&playlistId=${playlistId}&maxResults=${MAX_RESULTS}&key=${API_KEY}&pageToken=${nextPageToken}`;
 
     const { data } = await axios.get(URL);
 
@@ -60,6 +60,7 @@ const getPlaylistById = async (playlistId) => {
             thumbnails: playlistThumbnails,
             channelTitle,
             publishedAt: playlistPublishedAt,
+            // eslint-disable-next-line no-unsafe-optional-chaining
         } = playlist?.items[0]?.snippet;
 
         const playlistItems = await _getPlaylistItems(playlistId);
