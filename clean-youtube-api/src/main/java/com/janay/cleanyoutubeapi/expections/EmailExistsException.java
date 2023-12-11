@@ -3,9 +3,10 @@ package com.janay.cleanyoutubeapi.expections;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
-@ResponseStatus(HttpStatus.UNAUTHORIZED)
-public class EtAuthException extends RuntimeException {
-    public EtAuthException(String message) {
+@ResponseStatus(value = HttpStatus.BAD_REQUEST)
+public class EmailExistsException extends RuntimeException {
+
+    public EmailExistsException(String message) {
         super(message);
     }
 }
